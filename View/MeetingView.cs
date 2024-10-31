@@ -20,7 +20,7 @@ namespace Møteapplikasjon.View
             foreach (var item in meetings)
             {
                 string participantString = String.Join(", ", item.Participants);
-                Console.WriteLine($"Møtetittel: {item.Title}, Dato: {item.Date}, Klokkeslett: {item.TimeOfDay}, Deltakere: {participantString}");
+                Console.WriteLine($"Møtetittel: {item.Title}, Dato: {item.Date}, Klokkeslett: {item.TimeOfDay}, Deltakere: {participantString}, MøteId: {item.Id}");
             }
         }
     }

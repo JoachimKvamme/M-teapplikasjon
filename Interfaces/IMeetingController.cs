@@ -9,8 +9,8 @@ namespace Møteapplikasjon.Interfaces
     public interface IMeetingController
     {
         Meeting Create();
-        Meeting Delete(int id);
+        Meeting? Delete(int id);
         List<Meeting> Get();
-        Meeting Update(int id);
+        Meeting? Update(int id);
     }
 }
