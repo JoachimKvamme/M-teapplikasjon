@@ -11,7 +11,7 @@ using Møteapplikasjon.Data;
 namespace Møteapplikasjon.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241031090005_InitialCreate")]
+    [Migration("20241031102521_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -29,7 +29,12 @@ namespace Møteapplikasjon.Migrations
                     b.Property<DateOnly>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("TimeOfDay")
+                    b.Property<string>("Participants")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeOfDay")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -39,41 +44,6 @@ namespace Møteapplikasjon.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Meetings");
-                });
-
-            modelBuilder.Entity("Møteapplikasjon.Models.Person", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("MeetingId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MeetingId");
-
-                    b.ToTable("Persons");
-                });
-
-            modelBuilder.Entity("Møteapplikasjon.Models.Person", b =>
-                {
-                    b.HasOne("Møteapplikasjon.Models.Meeting", "Meeting")
-                        .WithMany()
-                        .HasForeignKey("MeetingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Meeting");
                 });
 #pragma warning restore 612, 618
         }

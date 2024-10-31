@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Møteapplikasjon.Models;
 
-namespace Møteapplikasjon.Models
+namespace Møteapplikasjon.Dto
 {
-    public class Meeting
+    public class MeetingDto
     {
-        public int Id { get; set; }
-        public List<string> Participants {get; set;} = new List<string>();
+        public List<string> Participants {get; set;}
         public string Title { get; set; } = string.Empty;
         public DateOnly Date { get; set; }
         public string TimeOfDay { get; set; } = string.Empty;

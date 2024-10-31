@@ -10,7 +10,7 @@ namespace Møteapplikasjon.Data
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Meeting> Meetings { get; set; }
-        public DbSet<Person> Persons { get; set; }
+
 
         // Det under var Microsoft sin foretrukne filsti for databasen, men jeg vet ikke hvor databasen da oppstår
         // så jeg laget min egen filsti.
