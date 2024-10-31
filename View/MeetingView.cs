@@ -20,8 +20,19 @@ namespace Møteapplikasjon.View
             foreach (var item in meetings)
             {
                 string participantString = String.Join(", ", item.Participants);
-                Console.WriteLine($"Møtetittel: {item.Title}, Dato: {item.Date}, Klokkeslett: {item.TimeOfDay}, Deltakere: {participantString}, MøteId: {item.Id}");
+                Console.WriteLine($"Møtetittel: {item.Title},\n Dato: {item.Date},\n Klokkeslett: {item.TimeOfDay}, \n Deltakere: {participantString}, \n MøteId: {item.Id}");
             }
+        }
+        public void ViewById(int id)
+        {
+            var meeting = _meetingController.GetById(id);
+            if(meeting == null)
+            {
+                Console.WriteLine("Det finnes intet møte med den møteId-en");
+                return;
+            }
+            string participantString = String.Join(", ", meeting.Participants);     
+            Console.WriteLine($"Møtetittel: {meeting.Title},\n Dato: {meeting.Date},\n Klokkeslett: {meeting.TimeOfDay},\n Deltakere: {participantString},\n MøteId: {meeting.Id}");
         }
     }
 }

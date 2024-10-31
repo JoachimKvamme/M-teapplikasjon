@@ -12,7 +12,7 @@ namespace Møteapplikasjon.Data
         public DbSet<Meeting> Meetings { get; set; }
 
 
-        // Det under var Microsoft sin foretrukne filsti for databasen, men jeg vet ikke hvor databasen da oppstår
+        // Det under var Microsoft sin foretrukne filsti for databasen, men jeg vet ikke hvor databasen da oppstår,
         // så jeg laget min egen filsti.
 
         // public string DbPath { get; }

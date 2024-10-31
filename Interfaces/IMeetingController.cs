@@ -11,6 +11,7 @@ namespace Møteapplikasjon.Interfaces
         Meeting Create();
         Meeting? Delete(int id);
         List<Meeting> Get();
+        Meeting? GetById(int id);
         Meeting? Update(int id);
     }
 }

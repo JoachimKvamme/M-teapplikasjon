@@ -86,6 +86,14 @@ namespace Møteapplikasjon.Controllers
             return _context.Meetings.ToList();
         }
 
+        public Meeting? GetById(int id)
+        {
+            var meetingModel = _context.Meetings.FirstOrDefault(m => m.Id == id);
+            if(meetingModel == null)
+                return null;
+            return meetingModel;
+        }
+
         public Meeting Update(int id)
         {
             var existingMeeting = _context.Meetings.FirstOrDefault(m => m.Id == id);
@@ -124,6 +132,8 @@ namespace Møteapplikasjon.Controllers
             existingMeeting.Title = title;
             existingMeeting.Date = date;
             existingMeeting.TimeOfDay = timeOfDay;
+
+            _context.SaveChanges();
 
             return existingMeeting;
         }
