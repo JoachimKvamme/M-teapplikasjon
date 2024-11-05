@@ -41,15 +41,28 @@ namespace Møteapplikasjon.Controllers
                 Console.WriteLine("Hva handler møtet om?");
                 string title = Console.ReadLine();
 
-            // DateOnly/DateTime-klassene er litt tungvinte å bruke i konsoll-applikasjoner. Jeg valgte
-            // å gjøre det på denne måten hvor brukeren bare velger dager fra i dag, for å minske sjansene
-            // for å få ugyldig input.
-            Console.WriteLine("Hvor mange dager fra nå skal møtet finne sted? Vennligst skriv inn kun sifre.");
+
+
+            int day;
+            int month;
+            int year;
+            Console.WriteLine("Når skal møtet finne sted?");
+            Console.WriteLine("Vennligst skriv inn årstall:");
+            Int32.TryParse(Console.ReadLine(), out year);
+            Console.WriteLine("Måned, som et tall:");
+            Int32.TryParse(Console.ReadLine(), out month);
+            Console.WriteLine("Og dag (også som et tall):");
+
+            Int32.TryParse(Console.ReadLine(), out day);
+            
+
+            DateOnly date = new DateOnly(year, month, day);
+
                 
-            int daysAway = int.Parse(Console.ReadLine());
-            DateOnly dateNow = DateOnly.FromDateTime(DateTime.Now);
-            DateOnly date = dateNow.AddDays(daysAway);
-            Console.WriteLine($"Møtetiden er satt til ${date}");
+            // int daysAway = int.Parse(Console.ReadLine());
+            // DateOnly dateNow = DateOnly.FromDateTime(DateTime.Now);
+            // DateOnly date = dateNow.AddDays(daysAway);
+            Console.WriteLine($"Møtetiden er satt til {date}");
 
             Console.WriteLine("Hvilket klokkeslett skal møtet finne sted?");
             string timeOfDay = Console.ReadLine();
