@@ -4,9 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Møteapplikasjon.Data;
-using Møteapplikasjon.Dto;
 using Møteapplikasjon.Interfaces;
-using Møteapplikasjon.Mappers;
 using Møteapplikasjon.Models;
 
 namespace Møteapplikasjon.Controllers
@@ -67,13 +65,12 @@ namespace Møteapplikasjon.Controllers
             Console.WriteLine("Hvilket klokkeslett skal møtet finne sted?");
             string timeOfDay = Console.ReadLine();
 
-            var meetingDto = new MeetingDto {
+            var meetingModel = new Meeting {
                 Participants = participants,
                 Title = title,
                 Date = date,
                 TimeOfDay = timeOfDay
             };
-            var meetingModel = meetingDto.ToMeetingFromCreate();
 
             _context.Add(meetingModel);
             _context.SaveChanges();
